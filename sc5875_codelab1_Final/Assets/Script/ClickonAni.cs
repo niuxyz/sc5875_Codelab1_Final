@@ -17,6 +17,7 @@ public class ClickonAni : MonoBehaviour {
 		ray = Camera.main.ScreenPointToRay (Input.mousePosition);
 		if (Input.GetMouseButtonDown (0) && Physics.Raycast (ray, out hit) && hit.collider.tag == "Animal") {
 			Debug.Log (hit.collider.gameObject.GetComponent<Animal>().Speak ());
+			animals = hit.collider.gameObject;
 		}		
 	}
 }

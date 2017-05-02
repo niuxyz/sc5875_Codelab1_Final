@@ -31,10 +31,12 @@ public class PrintTime : MonoBehaviour {
 	void Update(){
 		string content = DataFromCity (city, state);
 		CityData = JSON.Parse (content);
-
-		time = CityData ["query"] ["results"] ["channel"] ["lastBuildDate"];
-
-		whatTime.text = time;
+		if (CityData != null) {
+			time = CityData ["query"] ["results"] ["channel"] ["lastBuildDate"];
+		}
+		if (time != null) {
+			whatTime.text = time;
+		}
 	}
 	//Solve the internet, ignore all of them
 	public bool MyRemoteCertificateValidationCallback(System.Object sender, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors) {
