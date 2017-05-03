@@ -8,25 +8,22 @@ public class LyricManager : MonoBehaviour {
 	[SerializeField] float WholeSong;
 	[SerializeField] AudioClip Song;
 	private AudioSource audioSource;
-	private float timer;
+	[SerializeField] float timer;
 
 
 	// Use this for initialization
 	void Start () {
-		timer = 0.0f;
 		WholeSong = Song.length;
 		audioSource = gameObject.AddComponent<AudioSource>();
+		audioSource.playOnAwake = false;
 		audioSource.clip = Song;
 		audioSource.loop = false;
 		audioSource.Play();
+		timer = 0.0f;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		// timer += Time.deltaTime;
-		// if (timer >= WholeSong) {
-		// 	timer = 0.0f;
-		// }
 		if(timer <= WholeSong){
 			timer += Time.deltaTime;
 		}
