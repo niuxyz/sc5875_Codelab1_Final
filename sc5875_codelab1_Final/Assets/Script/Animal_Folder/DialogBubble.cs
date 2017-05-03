@@ -4,8 +4,10 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class DialogBubble : MonoBehaviour {
+	[SerializeField] float SingingTime = 1.0f;
 	private float timer;
 	private bool IfAppear;
+	private Color textColor;
 
 	// Use this for initialization
 	void Start () {
@@ -19,7 +21,7 @@ public class DialogBubble : MonoBehaviour {
 	void Update () {
 		if (IfAppear == true) {
 			timer += Time.deltaTime;
-			if (timer >= 1.0f) {
+			if (timer >= SingingTime) {
 				TurnOff_Bubble ();
 			}
 		}
@@ -28,7 +30,7 @@ public class DialogBubble : MonoBehaviour {
 	public void TurnOn_Bubble(){
 		IfAppear = true;
 		GetComponent<Image> ().color = Color.white;
-		GetComponentInChildren<Text> ().color = Color.black;
+		GetComponentInChildren<Text> ().enabled = true;
 		timer = 0.0f;
 	}
 
@@ -37,7 +39,7 @@ public class DialogBubble : MonoBehaviour {
 		timer = 0.0f;
 		IfAppear = false;
 		GetComponent<Image> ().color = Color.clear;
-		GetComponentInChildren<Text> ().color = Color.clear;
+		GetComponentInChildren<Text> ().enabled = false;
 
 
 	}

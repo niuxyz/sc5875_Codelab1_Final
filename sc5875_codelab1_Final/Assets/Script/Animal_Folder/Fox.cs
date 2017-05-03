@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Fox : Animal {
 
 	public override string Speak(){
-		base.Speak ();
-		return "...";
+		base.Speak();
+		return SpeakText.text;
 	}
 }
